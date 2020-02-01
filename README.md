@@ -1,5 +1,4 @@
-# ternary_op_vs_lookup_table_bench
-Ternary Operator vs Lookup Table Benchmark
+# Ternary Operator vs Lookup Table Benchmark
 
 I discovered a real case of premature micro-optimization when you don't measure. You know it is pretty bad when you read premature and micro on the same sentence. On the page 44 of [Optimizing C++](https://www.agner.org/optimize/optimizing_cpp.pdf) ebook by Agner Fog, it is written ...
 
@@ -22,7 +21,7 @@ a = lookup[b];
  
 *If a bool is used as an array index then it is important to make sure it is initialized or comes from a reliable source so that it can have no other values than 0 or 1. In some cases the compiler can automatically replace a branch by a **conditional move**.*
 
-I was trying to implement this lookup table optimization (to replace ternary operator) on a floating-point value which the code is compiled with G++ and ran on Linux. I also ran the integer benchmark and on other compilers such like Visual C++ 2019 and Clang and also the Visual C# 7 to see their differences. In C++ benchmark, the lookup array is declared as a static local variable inside the function. In Visual C# code, static local variable is not permitted so the lookup array is declared as a static member variable inside the function. This is the benchmark results below.
+I was trying to implement this lookup table optimization (to replace ternary operator) on a floating-point value which the code is compiled with G++ and ran on Linux. I also ran the integer benchmark and on other compilers such like Visual C++ 2019 and Clang and also the Visual C# 7 to see their differences. In C++ benchmark, the lookup array is declared as a static local variable inside the function. In Visual C# code, static local variable is not permitted so the lookup array is declared as a static member variable inside the class. This is the benchmark results below.
 
 ```
 VC++ /Ox results
